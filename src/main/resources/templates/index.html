@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+	<title>Breakfast APP</title>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="style/style.css" />
+
+</head>
+
+<body>
+
+	<header>
+		<nav class="menu">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo"><b>Lista de Café da Manhã</b></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/cadastrarBreakfast" class="waves-effect waves-light btn"><i
+								class="material-icons left">add_circle_outline</i>Cadastrar Café da Manhã</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</header>
+
+	<div class="container formIndex">
+
+		<table class="container">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Comida/Bebida</th>
+					<th>Deletar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="breakfast : ${breakfasts}">
+					<td><span th:text="${breakfast.nome}"></span></td>
+					<td><span th:text="${breakfast.cpf}"></span></td>
+					<td><span th:text="${breakfast.comida}"></span></td>
+					<td><a class="waves-effect waves-light"
+							th:href="${(#mvc.url('BC#deletarBreakfast').arg(0, breakfast.id)).build()}"><i
+								class="material-icons left">delete</i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>
