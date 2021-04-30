@@ -38,6 +38,7 @@
 					<th>Nome</th>
 					<th>CPF</th>
 					<th>Comida/Bebida</th>
+					<th>Editar</th>
 					<th>Deletar</th>
 				</tr>
 			</thead>
@@ -46,6 +47,9 @@
 					<td><span th:text="${breakfast.nome}"></span></td>
 					<td><span th:text="${breakfast.cpf}"></span></td>
 					<td><span th:text="${breakfast.comida}"></span></td>
+					<td><a class="waves-effect waves-light"
+							th:href="${(#mvc.url('BC#alterarBreakfast').arg(0, breakfast.id)).build()}"><i
+								class="material-icons left">edit</i></a></td>
 					<td><a class="waves-effect waves-light"
 							th:href="${(#mvc.url('BC#deletarBreakfast').arg(0, breakfast.id)).build()}"><i
 								class="material-icons left">delete</i></a></td>

@@ -31,7 +31,7 @@
 	<header>
 		<nav class="menu">
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo"><b>Cadastrar Café da Manhã</b></a>
+				<a href="#" class="brand-logo"><b>Alterar Café da Manhã</b></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="/breakfasts" class="waves-effect waves-light btn"><i
 								class="material-icons left">format_list_bulleted</i>Lista de Café da Manhã</a></li>
@@ -46,15 +46,14 @@
 		<form class="container" method="post">
 			<div class="row">
 				<div class="input-fiel col s8">
-					<b>Nome: </b><input type="text" value="" name="nome" placeholder="Nome Completo" />
+					<b>Nome: </b><input type="text" value="" name="nome" th:field="${breakfast.nome}" />
 				</div>
 				<div class="input-fiel col s8">
 					<b>CPF: </b><input type="text" value="" id="CPF" name="cpf" size="14" maxlength="14"
-						placeholder="000.000.000-00" />
+						th:field="${breakfast.cpf}" />
 				</div>
 				<div class="input-fiel col s8">
-					<b>Comida/Bebida: </b><input type="text" value="" name="comida"
-						placeholder="Digite sua opção para o café da manhã" />
+					<b>Comida/Bebida: </b><input type="text" value="" name="comida" th:field="${breakfast.comida}" />
 				</div>
 				<div class="input-fiel col s8">
 					<font size="5"><b>

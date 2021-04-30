@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Breakfast implements Serializable {
@@ -19,8 +20,11 @@ public class Breakfast implements Serializable {
 
 	@NotEmpty
 	private String nome;
+	
 	@NotEmpty
+	@Size(min = 14)
 	private String cpf;
+	
 	@NotEmpty
 	private String comida;
 
