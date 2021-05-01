@@ -6,5 +6,4 @@ import br.com.allisoncostabarros.model.Breakfast;
 
 public interface BreakfastRepository extends CrudRepository<Breakfast, String> {
 	Breakfast findById (long id);
-
 }

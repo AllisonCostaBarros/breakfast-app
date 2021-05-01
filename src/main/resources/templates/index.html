@@ -30,7 +30,7 @@
 
 	</header>
 
-	<div class="container formIndex">
+	<div class="container index">
 
 		<table class="container">
 			<thead>
@@ -43,7 +43,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="breakfast : ${breakfasts}">
+				<tr th:each="breakfast : ${breakfast}">
 					<td><span th:text="${breakfast.nome}"></span></td>
 					<td><span th:text="${breakfast.cpf}"></span></td>
 					<td><span th:text="${breakfast.comida}"></span></td>

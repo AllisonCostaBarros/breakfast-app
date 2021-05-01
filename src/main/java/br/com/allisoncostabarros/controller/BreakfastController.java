@@ -21,15 +21,34 @@ public class BreakfastController {
 	private BreakfastRepository br;
 
 	@RequestMapping(value = "/cadastrarBreakfast", method = RequestMethod.GET)
-	public String form() {
-		return "breakfast/formBreakfast";
+	public String cadastrarBreakfast() {
+		return "breakfast/cadastrarBreakfast";
+	}
+
+	@RequestMapping(value = "/cadastrarBreakfast", method = RequestMethod.POST)
+	public String cadastrarBreakfast(@Valid Breakfast breakfast, BindingResult result, RedirectAttributes attributes) {
+		if (result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+			return "redirect:/cadastrarBreakfast";
+		}
+		br.save(breakfast);
+		attributes.addFlashAttribute("mensagem", "Café da manhã cadastrado com sucesso!");
+		return "redirect:/cadastrarBreakfast";
+	}
+
+	@RequestMapping("/breakfast")
+	public ModelAndView listarBreakfast() {
+		ModelAndView mv = new ModelAndView("index");
+		Iterable<Breakfast> breakfast = br.findAll();
+		mv.addObject("breakfast", breakfast);
+		return mv;
 	}
 
 	@RequestMapping("/deletarBreakfast")
 	public String deletarBreakfast(long id) {
 		Breakfast breakfast = br.findById(id);
 		br.delete(breakfast);
-		return "redirect:/breakfasts";
+		return "redirect:/breakfast";
 	}
 
 	@RequestMapping("/{id}")
@@ -37,26 +56,6 @@ public class BreakfastController {
 		ModelAndView mv = new ModelAndView("breakfast/alterarBreakfast");
 		Breakfast breakfast = br.findById(id);
 		mv.addObject("breakfast", breakfast);
-		return mv;
-	}
-
-	@RequestMapping(value = "/cadastrarBreakfast", method = RequestMethod.POST)
-	public String form(@Valid Breakfast breakfast, BindingResult result, RedirectAttributes attributes) {
-		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-			return "redirect:/cadastrarBreakfast";
-		}
-
-		br.save(breakfast);
-		attributes.addFlashAttribute("mensagem", "Café da manhã cadastrado com sucesso!");
-		return "redirect:/cadastrarBreakfast";
-	}
-
-	@RequestMapping("/breakfasts")
-	public ModelAndView listaBreakfasts() {
-		ModelAndView mv = new ModelAndView("index");
-		Iterable<Breakfast> breakfasts = br.findAll();
-		mv.addObject("breakfasts", breakfasts);
 		return mv;
 	}
 
