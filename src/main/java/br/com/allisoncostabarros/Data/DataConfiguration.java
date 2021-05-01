@@ -1,4 +1,4 @@
-package br.com.allisoncostabarros.Data;
+package br.com.allisoncostabarros.data;
 
 import javax.sql.DataSource;
 
